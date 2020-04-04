@@ -1,10 +1,14 @@
 extern crate clap;
-use clap::{App, Arg, SubCommand};
+use clap::{crate_authors, crate_version, App, Arg};
+pub use crate::osx::{ setup_osx };
+pub use crate::archlinux::{ setup_arch_linux };
+pub mod osx;
+pub mod archlinux;
 
 fn main() {
     let matches = App::new("Franky")
-        .version("0.1.0")
-        .author("Rupa Ghimire <rupaghimire14@gmail.com>")
+        .version(crate_version!())
+        .author(crate_authors!())
         .about("Setup things for you")
         .arg(
             Arg::with_name("setup")
@@ -12,7 +16,16 @@ fn main() {
                 .long("setup")
                 .value_name("PROGRAM")
                 .help("Sets a custom program")
+                .required(true)
+                .default_value("osx")
                 .takes_value(true),
         )
         .get_matches();
+        let setup = matches.value_of("setup").unwrap();
+        match setup {
+                "osx" => setup_osx(),
+                "archlinux" => setup_arch_linux(),
+                _ => println!("Not Supported")
+        }
+
 }
