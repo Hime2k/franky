@@ -1,12 +1,13 @@
-pub async fn setup_arch_linux() {
-    println!("Setting up Arch Linux");
+// install packages from apps.json using apt in ubuntu
 
-        // print uname -a
-        let uname = std::process::Command::new("uname")
+pub async fn setup_ubuntu() {
+    println!("Setting up Ubuntu");
+
+    let uname = std::process::Command::new("uname")
         .arg("-m")
         .output()
         .expect("failed to execute process");
-    println!("architecture -a: {}", String::from_utf8_lossy(&uname.stdout));
+    println!("architecture: {}", String::from_utf8_lossy(&uname.stdout));
 
     // print lsb_release -a
 
@@ -16,4 +17,6 @@ pub async fn setup_arch_linux() {
         .expect("failed to execute process");
     
     println!("lsb_release -a: {}", String::from_utf8_lossy(&lsb_release.stdout));
+
+
 }

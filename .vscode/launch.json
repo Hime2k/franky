@@ -1,0 +1,46 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug executable 'franky'",
+            "cargo": {
+                "args": [
+                    "build",
+                    "--bin=franky",
+                    "--package=franky",
+                    "ubuntu"
+                ],
+                "filter": {
+                    "name": "franky",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        },
+        {
+            "type": "lldb",
+            "request": "launch",
+            "name": "Debug unit tests in executable 'franky'",
+            "cargo": {
+                "args": [
+                    "test",
+                    "--no-run",
+                    "--bin=franky",
+                    "--package=franky"
+                ],
+                "filter": {
+                    "name": "franky",
+                    "kind": "bin"
+                }
+            },
+            "args": [],
+            "cwd": "${workspaceFolder}"
+        }
+    ]
+}

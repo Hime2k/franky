@@ -1,11 +1,12 @@
 [package]
 name = "franky"
-version = "0.1.0"
+version = "0.2.0"
 authors = ["Rupa Ghimire <rupaghimire14@gmail.com>", "Suraj Ghimire <suraj@ghishadow.com>" ]
-edition = "2018"
-
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+edition = "2021"
 
 [dependencies]
-clap = "2.33.0"
-indicatif = "0.14.0"
+argh = "0.1.12"
+indicatif = "0.17.7"
+serde_json = "1.0.107"
+snmalloc-rs = { version = "0.3.4", features = ["usecxx17"] }
+tokio = { version = "1.32.0", features = ["tracing", "macros", "rt-multi-thread"] }
